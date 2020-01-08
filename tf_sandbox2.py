@@ -27,7 +27,7 @@ word_index["<UNUSED>"] = 3
 ## reverses dictionary so INT -> WORD
 reverse_word_index = dict([(value,key) for (key,value) in word_index.items()])
 
-'''
+
 ## Pads and cuts all data to have length 250
 train_data = keras.preprocessing.sequence.pad_sequences(train_data, value= word_index["<PAD>"], padding="post", maxlen=250)
 test_data = keras.preprocessing.sequence.pad_sequences(test_data, value= word_index["<PAD>"], padding="post", maxlen=250)
@@ -65,9 +65,9 @@ fitModel = model.fit(x_train, y_train, epochs=40, batch_size=512, validation_dat
 
 results = model.evaluate(test_data, test_labels)
 
-model.save("movie_review_model.h5")'''
+model.save("movie_review_model.h5")
 
-
+'''
 model= keras.models.load_model("movie_review_model.h5")
 
 def review_encode(s):
@@ -92,7 +92,7 @@ with open("parasite_review.txt") as f:
 
 
 
-'''
+
 print("model results: ", results)
 
 test_review= test_data[0]
