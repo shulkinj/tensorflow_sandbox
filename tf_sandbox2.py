@@ -7,7 +7,7 @@ import numpy as np
 
 data = keras.datasets.imdb
 
-(train_data, train_labels), (test_data, test_labels) = data.load_data(num_words=88000)
+(train_data, train_labels), (test_data, test_labels) = data.load_data(num_words=10000)
 
 ## gets index word tuples
 word_index = data.get_word_index()
@@ -42,12 +42,12 @@ def decode_review(text):
 ## MODEL
 model = keras.Sequential()
 #word embedding layer, 16D embedding vector
-model.add(keras.layers.Embedding(88000,16))
+model.add(keras.layers.Embedding(10000,16))
 #averages word embeddings
 model.add(keras.layers.GlobalAveragePooling1D())
 model.add(keras.layers.Dense(16, activation="relu"))
 model.add(keras.layers.Dense(1, activation="sigmoid"))
-)
+
 model.summary()
 
 model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
